@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "init.h"
+#include "init_scale.h"
 
 void init_vectors(int Np, double **x, double **y, double **v, double **S) {
 

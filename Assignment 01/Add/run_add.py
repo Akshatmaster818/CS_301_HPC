@@ -52,37 +52,31 @@ for run_id in range(NUM_RUNS):
         e2e_time = float(parts[3])
         algo_time = float(parts[4])
 
-        entry = results[problem_size]
-        entry["runs"] = runs
-        entry["total_particles"] = total_particles
-        entry["e2e_times"].append(e2e_time)
-        entry["algo_times"].append(algo_time)
+        results[problem_size]["runs"] = runs
+        results[problem_size]["total_particles"] = total_particles
+        results[problem_size]["e2e_times"].append(e2e_time)
+        results[problem_size]["algo_times"].append(algo_time)
 
     print()
 
-# Write averaged results to CSV
-with open(OUTPUT_CSV, "w", newline="") as f:
-    writer = csv.writer(f)
-    writer.writerow([
-        "ProblemSize",
-        "RUNS",
-        "TotalParticles",
-        "AvgE2ETime",
-        "AvgAlgoTime"
-    ])
+# Calculate averages and write to CSV
+print(f"Writing results to {OUTPUT_CSV}\n")
+
+with open(OUTPUT_CSV, mode='w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["Np-ProblemSize", "RUNS", "TotalParticles", "AvgE2ETime", "AvgAlgoTime"])
 
     for problem_size in sorted(results.keys()):
-        entry = results[problem_size]
-
-        avg_e2e = sum(entry["e2e_times"]) / len(entry["e2e_times"])
-        avg_algo = sum(entry["algo_times"]) / len(entry["algo_times"])
+        data = results[problem_size]
+        avg_e2e_time = sum(data["e2e_times"]) / len(data["e2e_times"])
+        avg_algo_time = sum(data["algo_times"]) / len(data["algo_times"])
 
         writer.writerow([
             problem_size,
-            entry["runs"],
-            entry["total_particles"],
-            f"{avg_e2e:.9f}",
-            f"{avg_algo:.9f}"
+            data["runs"],
+            data["total_particles"],
+            avg_e2e_time,
+            avg_algo_time
         ])
 
-print(f"Averaged results written to: {OUTPUT_CSV}")
+print("Done!")

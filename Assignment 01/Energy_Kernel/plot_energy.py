@@ -16,12 +16,12 @@ for col in df.columns:
     df[col] = pd.to_numeric(df[col])
 
 # Throughput (MFLOPs)
-# 2 FLOPs per element (mul + add)
+# 2 FLOPs per element (multiply + multiply for v[p]^2)
 df["Throughput (MFLOPs)"] = (2 * df["problem_size"] * df["runs"]) / (df["avg_algo_time"] * (2 ** 20))
 
 # Bandwidth calculation (bits / second)
-# Vector triad: 3 reads + 1 write = 4 doubles = 32 bytes
-bytes_moved = 32 * df["problem_size"] * df["runs"]
+# Energy Kernel: 1 read + 1 write = 2 doubles = 16 bytes
+bytes_moved = 16 * df["problem_size"] * df["runs"]
 df["Bandwidth (GB/s)"] = bytes_moved / df["avg_algo_time"] / 1e9
 
 # Plot 1: Throughput vs problem size
@@ -33,7 +33,7 @@ plt.plot(
 )
 plt.xlabel("log2(Problem Size)")
 plt.ylabel("log10(Throughput) [MFLOPs]")
-plt.title("Compute Throughput vs Problem Size")
+plt.title("Compute Throughput vs Problem Size (Energy Kernel Operation)")
 plt.grid(True, which="both")
 plt.tight_layout()
 plt.savefig("results/throughput_vs_problem_size.png")
@@ -49,13 +49,11 @@ plt.plot(
     marker="o"
 )
 plt.xlabel("log2(Problem Size)")
-plt.ylabel("Bandwidth (GB/s)")
-plt.title("Memory Bandwidth vs Problem Size")
+plt.ylabel("Bandwidth [GB/s]")
+plt.title("Memory Bandwidth vs Problem Size (Energy Kernel Operation)")
 plt.grid(True, which="both")
 plt.tight_layout()
 plt.savefig("results/bandwidth_vs_problem_size.png")
 plt.close()
 
-print("Plots saved successfully:")
-print(" - throughput_vs_problem_size.png")
-print(" - bandwidth_vs_problem_size.png")
+print("Plots generated successfully!")
