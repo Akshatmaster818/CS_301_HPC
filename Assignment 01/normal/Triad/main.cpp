@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "init_energy.h"
-#include "utils_energy.h"
+#include "init.h"
+#include "utils.h"
 
 #define CLK CLOCK_MONOTONIC
 
@@ -16,7 +16,7 @@ int main() {
     int maxProbSize = 1 << 29; // pow(2, 29)
     int totalParticles   = maxProbSize;
 
-    double *x, *y, *v, *E;
+    double *x, *y, *v, *S;
 
     // print the output order
     printf("Np-ProblemSize, RUNS, TotalParticles, E2ETime, AlgoTime\n");
@@ -26,14 +26,14 @@ int main() {
         clock_gettime(CLK, &start_e2e);
 
         // Initialize Vectors
-        init_vectors(Np, &x, &y, &v, &E);
+        init_vectors(Np, &x, &y, &v, &S);
 
         int RUNS = totalParticles / Np;
 
         clock_gettime(CLK, &start_alg);
 
         for (int run = 0; run < RUNS; run++) {
-            energy_kernel_operation(v, E, Np);
+            vector_triad_operation(x, y, v, S, Np);
         }
 
         clock_gettime(CLK, &end_alg);
@@ -44,7 +44,7 @@ int main() {
 
         printf("%d, %d, %d, %.9lf, %.9lf\n", Np, RUNS, Np * RUNS, e2e_time, alg_time);
 
-        free_vectors(x, y, v, E);
+        free_vectors(x, y, v, S);
     }
 
     return 0;

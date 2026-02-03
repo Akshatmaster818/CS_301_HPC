@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "init_energy.h"
+#include "init_scale.h"
 
-void init_vectors(int Np, double **x, double **y, double **v, double **E) {
+void init_vectors(int Np, double **x, double **y, double **v, double **S) {
 
     // Allocate memory for vectors
     *x = (double*) malloc(Np * sizeof(double));
     *y = (double*) malloc(Np * sizeof(double));
     *v = (double*) malloc(Np * sizeof(double));
-    *E = (double*) malloc(Np * sizeof(double));
+    *S = (double*) malloc(Np * sizeof(double));
 
     for (int i = 0; i < Np; i++) {
 
@@ -18,13 +18,13 @@ void init_vectors(int Np, double **x, double **y, double **v, double **E) {
         (*y)[i] = (double) rand() / (double) RAND_MAX;
         (*v)[i] = (double) rand() / (double) RAND_MAX;
 
-        (*E)[i] = 0.0;
+        (*S)[i] = 0.0;
     }
 }
 
-void free_vectors(double *x, double *y, double *v, double *E) {
+void free_vectors(double *x, double *y, double *v, double *S) {
     free(x);
     free(y);
     free(v);
-    free(E);
+    free(S);
 }

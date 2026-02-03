@@ -1,12 +1,10 @@
 #include <math.h>
-#include "utils_energy.h"
+#include "utils_add.h"
 
-void energy_kernel_operation(double *v, double *E, int Np) {
-    // Energy Kernel: E[p] = 0.5 * m * v[p]^2, where m = 1.0
-    double m = 1.0;
-
+void vector_sum_operation(double *x, double *y, double *S, int Np) {
+    // Add: S[p] = x[p] + y[p]
     for (int p = 0; p < Np; p++) {
-        E[p] = 0.5 * m * v[p] * v[p];
+        S[p] = x[p] + y[p];
 
         // Prevent compiler from optimizing away the loop
         if (((double)p) == 333.333)
