@@ -28,13 +28,23 @@ int main() {
         clock_gettime(CLK, &start_e2e);
 
         // Initialize Matrices
-        init_matrices(Np, &m1, &m2, &result);
+        init_matrices(Np, &m1, &m2, &mt, &result);
 
         // Block Size   
         // int B = (Np >= 32? 32 : Np);
 
         clock_gettime(CLK, &start_alg);
-        matrix_multiplication(m1, m2, result, Np);
+        // matmul_ijk(m1, m2, result, Np);
+        matmul_ikj(m1, m2, result, Np);
+        // matmul_jik(m1, m2, result, Np);
+        // matmul_jki(m1, m2, result, Np);
+        // matmul_kij(m1, m2, result, Np);
+        // matmul_kji(m1, m2, result, Np);
+
+        // block_matrix_multiplication(m1,m2,result,B,Np);
+
+        // transposed_matrix_multiplication(m1,m2,mt,result,Np);
+        
         clock_gettime(CLK, &end_alg);
 
         clock_gettime(CLK, &end_e2e);
@@ -46,7 +56,7 @@ int main() {
         printf("%d, %.9lf, %.9lf\n", Np, e2e_time, alg_time);
         fflush(stdout); 
 
-        free_matrices(Np, m1, m2, result);
+        free_matrices(Np, m1, m2, mt, result);
     }
 
     return 0;

@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(
-    "results/avg_algo_times.csv",
+    "results/block.csv",
     skipinitialspace=True
 )
 

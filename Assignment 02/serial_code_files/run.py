@@ -6,7 +6,7 @@ from collections import defaultdict
 # User-configurable parameters
 EXECUTABLE = "./output"               # compiled binary file
 NUM_RUNS = 5                          # number of repetitions
-OUTPUT_CSV = "results/avg_algo_times.csv"
+OUTPUT_CSV = "results/ikj.csv"
 
 # Ensure results directory exists
 os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
@@ -17,17 +17,17 @@ results = defaultdict(lambda: {
     "algo_times": []
 })
 
-print(f"Running benchmark {NUM_RUNS} times...\n")
+print("Running benchmark {} times...\n".format(NUM_RUNS))
 
 # Run executable multiple times
 for run_id in range(NUM_RUNS):
-    print(f"\n=== Run {run_id + 1}/{NUM_RUNS} ===")
+    print("\n=== Run {}/{} ===".format(run_id + 1, NUM_RUNS))
 
     proc = subprocess.Popen(
         [EXECUTABLE],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-        text=True,
+        universal_newlines=True,
         bufsize=1  # line-buffered
     )
 
@@ -42,7 +42,7 @@ for run_id in range(NUM_RUNS):
             continue
 
         line = line.strip()
-        print(line)  
+        print(line)
 
         # Skip header line
         if "ProblemSize" in line:
@@ -64,7 +64,7 @@ for run_id in range(NUM_RUNS):
         results[problem_size]["e2e_times"].append(e2e_time)
         results[problem_size]["algo_times"].append(algo_time)
 
-    # print stderr if any
+    # Print stderr if any
     err = proc.stderr.read()
     if err:
         print("STDERR:", err)
@@ -86,8 +86,8 @@ with open(OUTPUT_CSV, "w", newline="") as f:
 
         writer.writerow([
             problem_size,
-            f"{avg_e2e:.9f}",
-            f"{avg_algo:.9f}"
+            "{:.9f}".format(avg_e2e),
+            "{:.9f}".format(avg_algo)
         ])
 
-print(f"\nAveraged results written to: {OUTPUT_CSV}")
+print("\nAveraged results written to: {}".format(OUTPUT_CSV))
