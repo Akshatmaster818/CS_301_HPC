@@ -1,0 +1,104 @@
+============================================================
+               PARALLEL INTERPOLATION BENCHMARK             
+============================================================
+ Configuration Details:
+  - Grid Dimensions : 500 x 200
+  - Total Particles : 20000000
+  - Max Iterations  : 10
+  - OpenMP Threads  : 2
+------------------------------------------------------------
+  [Iteration  1/10]  Time: 0.267739 seconds
+  [Iteration  2/10]  Time: 0.278799 seconds
+  [Iteration  3/10]  Time: 0.267599 seconds
+  [Iteration  4/10]  Time: 0.275101 seconds
+  [Iteration  5/10]  Time: 0.267110 seconds
+  [Iteration  6/10]  Time: 0.266993 seconds
+  [Iteration  7/10]  Time: 0.275111 seconds
+  [Iteration  8/10]  Time: 0.275551 seconds
+  [Iteration  9/10]  Time: 0.274657 seconds
+  [Iteration 10/10]  Time: 0.291817 seconds
+------------------------------------------------------------
+  Total Time        : 2.740477 seconds
+  Average Iter Time : 0.274048 seconds
+============================================================
+
+
+============================================================
+               PARALLEL INTERPOLATION BENCHMARK             
+============================================================
+ Configuration Details:
+  - Grid Dimensions : 500 x 200
+  - Total Particles : 20000000
+  - Max Iterations  : 10
+  - OpenMP Threads  : 4
+------------------------------------------------------------
+  [Iteration  1/10]  Time: 0.134829 seconds
+  [Iteration  2/10]  Time: 0.134580 seconds
+  [Iteration  3/10]  Time: 0.134163 seconds
+  [Iteration  4/10]  Time: 0.139008 seconds
+  [Iteration  5/10]  Time: 0.143336 seconds
+  [Iteration  6/10]  Time: 0.143417 seconds
+  [Iteration  7/10]  Time: 0.143353 seconds
+  [Iteration  8/10]  Time: 0.143696 seconds
+  [Iteration  9/10]  Time: 0.138542 seconds
+  [Iteration 10/10]  Time: 0.138401 seconds
+------------------------------------------------------------
+  Total Time        : 1.393326 seconds
+  Average Iter Time : 0.139333 seconds
+============================================================
+
+
+============================================================
+               PARALLEL INTERPOLATION BENCHMARK             
+============================================================
+ Configuration Details:
+  - Grid Dimensions : 500 x 200
+  - Total Particles : 20000000
+  - Max Iterations  : 10
+  - OpenMP Threads  : 8
+------------------------------------------------------------
+  [Iteration  1/10]  Time: 0.073987 seconds
+  [Iteration  2/10]  Time: 0.074105 seconds
+  [Iteration  3/10]  Time: 0.073803 seconds
+  [Iteration  4/10]  Time: 0.074917 seconds
+  [Iteration  5/10]  Time: 0.073799 seconds
+  [Iteration  6/10]  Time: 0.073815 seconds
+  [Iteration  7/10]  Time: 0.074078 seconds
+  [Iteration  8/10]  Time: 0.073908 seconds
+  [Iteration  9/10]  Time: 0.073954 seconds
+  [Iteration 10/10]  Time: 0.074335 seconds
+------------------------------------------------------------
+  Total Time        : 0.740702 seconds
+  Average Iter Time : 0.074070 seconds
+============================================================
+
+
+============================================================
+               PARALLEL INTERPOLATION BENCHMARK             
+============================================================
+ Configuration Details:
+  - Grid Dimensions : 500 x 200
+  - Total Particles : 20000000
+  - Max Iterations  : 10
+  - OpenMP Threads  : 16
+------------------------------------------------------------
+  [Iteration  1/10]  Time: 0.064210 seconds
+  [Iteration  2/10]  Time: 0.065510 seconds
+  [Iteration  3/10]  Time: 0.065284 seconds
+  [Iteration  4/10]  Time: 0.063950 seconds
+  [Iteration  5/10]  Time: 0.063905 seconds
+  [Iteration  6/10]  Time: 0.066401 seconds
+  [Iteration  7/10]  Time: 0.064722 seconds
+  [Iteration  8/10]  Time: 0.064111 seconds
+  [Iteration  9/10]  Time: 0.065349 seconds
+  [Iteration 10/10]  Time: 0.064655 seconds
+------------------------------------------------------------
+  Total Time        : 0.648098 seconds
+  Average Iter Time : 0.064810 seconds
+============================================================
+
+  [Iteration 10/10]  Time: 0.064655 seconds
+------------------------------------------------------------
+  Total Time        : 0.648098 seconds
+  Average Iter Time : 0.064810 seconds
+============================================================
